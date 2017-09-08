@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+
+    <android.support.v7.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:text="获取用户信息"
+        android:onClick="getUserInfo"
+        android:layout_height="200dp" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:text="获取用户信息"
+        android:onClick="goToSecondActivity"
+        android:layout_height="200dp" />
 
     <TextView
         android:id="@+id/tv_main_content"
@@ -17,11 +33,4 @@
 
 
 
-    <android.support.v7.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:text="获取用户信息"
-        android:onClick="getUserInfo"
-        android:layout_height="200dp" />
-
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -6,6 +6,7 @@ import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LifecycleRegistry;
 import android.arch.lifecycle.LifecycleRegistryOwner;
 import android.arch.lifecycle.OnLifecycleEvent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,6 +16,10 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import desperado.com.googlestructureproject.entity.UserDataEntity;
 import desperado.com.googlestructureproject.entity.UserEntity;
 import desperado.com.googlestructureproject.mvp.model.UserModel;
 import desperado.com.googlestructureproject.mvp.presenter.UserPresenter;
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements LifecycleRegistry
     LifecycleRegistry registry = new LifecycleRegistry(this);
     private TextView tv_main_content;
     private UserPresenter mPresenter;
+    private ArrayList<UserDataEntity> result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements LifecycleRegistry
     public void handleData(UserEntity userEntity) {
         if (userEntity != null && userEntity.result != null && !userEntity.result.isEmpty()) {
             tv_main_content.setText(JSON.toJSONString(userEntity));
+            result = userEntity.result;
         }
     }
 
@@ -88,6 +95,15 @@ public class MainActivity extends AppCompatActivity implements LifecycleRegistry
 
     public void getUserInfo(View view) {
         mPresenter.getUsers();
+    }
+
+
+    public void goToSecondActivity(View view) {
+        Intent localIntent = new Intent(this, SecondActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("result", result);
+        localIntent.putExtras(bundle);
+        startActivity(localIntent);
     }
 
     @Override

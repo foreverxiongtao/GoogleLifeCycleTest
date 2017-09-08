@@ -1,5 +1,8 @@
 package desperado.com.googlestructureproject.entity;
 
+import android.arch.persistence.room.Entity;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -18,13 +21,8 @@ import java.util.List;
  * 修订日期 :
  */
 
+@Entity(tableName = "user")
 public class UserEntity {
 
-    public List<UserDataEntity> result;
-
-    public static class UserDataEntity {
-        public String id;
-        public int age;
-        public String name;
-    }
+    public ArrayList<UserDataEntity> result;
 }
